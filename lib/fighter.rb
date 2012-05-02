@@ -1,11 +1,13 @@
 # 8-Bit RPG the fully playable zygote? powered by Ruby!
 # written and coded by Jackson Kisling
 # This version update: 4-25-12
-
+require 'debugger'
 require_relative 'player'
 require_relative 'treasure'
 require_relative 'monster'
 
+require_relative 'seeds'
+#include SEEDS
 def rolld (x)
   (rand(x) + 1)
 end
@@ -13,63 +15,14 @@ end
 def play()
   notreasure = Treasure.new('none', 0, 'alltypes', 0, 0, 0, 0, false, false)
 
-  frillyunderwear = Treasure.new('Frilly Underwear', 1, 'armor', 0, 1, 0, 0, false, false)
-  leatherjerkin   = Treasure.new('Leather Jerkin', 3, 'armor', 0, 2, 0, 0, false, false)
-  ringmail        = Treasure.new('Ring Mail', 6, 'armor', 0, 3, 0, 0, false, false)
-  elvenleather    = Treasure.new('Elven Leather', 3, 'armor', 0, 1, 1, 0, false, false)
-  elvenchainmail  = Treasure.new('Elven Chain Mail', 8, 'armor', 0, 3, 1, 0, false, false)
-  platemail       = Treasure.new('Ring Mail', 10, 'armor', 0, 4, 0, 0, false, false)
-  elvenplate      = Treasure.new('Elven Plate Mail', 15, 'armor', 0, 4, 2, 0, false, false)
-  allarmor        = [frillyunderwear, leatherjerkin, ringmail, elvenleather, elvenchainmail, platemail, elvenplate]
-
-  stick        = Treasure.new('Stick', 1, 'weapon', 1, 0, 0, 0, false, false)
-  dagger       = Treasure.new('Dagger', 3, 'weapon', 2, 0, 0, 0, false, false)
-  mace         = Treasure.new('Mace', 6, 'weapon', 3, 0, 0, 0, false, false)
-  sabre        = Treasure.new('Sabre', 5, 'weapon', 2, 0, 1, 0, false, false)
-  longsword    = Treasure.new('Long Sword', 10, 'weapon', 4, 0, 0, 0, false, false)
-  magicsabre   = Treasure.new('Magic Sabre', 11, 'weapon', 3, 0, 2, 0, false, false)
-  mightyaxe    = Treasure.new('Mighty Axe', 15, 'weapon', 5, 0, 0, 0, false, false)
-  flamingsword = Treasure.new('Flaming Sword', 25, 'weapon', 6, 0, 1, 0, false, false)
-  allweapons   = [stick, dagger, mace, sabre, longsword, magicsabre, mightyaxe, flamingsword]
-
-  jauntyhat    = Treasure.new('Jaunty Hat', 1, 'helmet', 0, 1, 0, 0, false, false)
-  chaincoif    = Treasure.new('Chain Coif', 3, 'helmet', 0, 2, 0, 0, false, false)
-  ironhelmet   = Treasure.new('Iron Helmet', 6, 'helmet', 0, 3, 0, 0, false, false)
-  elvenhelmet  = Treasure.new('Elven Helmet', 8, 'helmet', 0, 2, 2, 0, false, false)
-  magichelm    = Treasure.new('Magic Helm', 10, 'helmet', 0, 3, 2, 0, false, false)
-  hornedhelm   = Treasure.new('Horned Helm', 13, 'helmet', 2, 4, 0, 0, false, false)
-  helmofwisdom = Treasure.new('Helm Of Wisdom', 20, 'helmet', 0, 3, 2, 0, false, false)
-  allhelmets   = [jauntyhat, chaincoif, ironhelmet, elvenhelmet, magichelm, hornedhelm, helmofwisdom]
-
-  onemitten         = Treasure.new('One Purple Mitten', 1, 'gloves', 0, 1, 0, 0, false, false)
-  leathergloves     = Treasure.new('Leather Gloves', 3, 'gloves', 0, 1, 1, 0, false, false)
-  chaingloves       = Treasure.new('Chain Gloves', 6, 'gloves', 0, 3, 0, 0, false, false)
-  mailedfist        = Treasure.new('Mailed Fist', 10, 'gloves', 1, 3, 0, 0, false, false)
-  glovesofquickness = Treasure.new('Gloves Of Quickness', 12, 'gloves', 0, 1, 3, 0, false, false)
-  glovesofthievery  = Treasure.new('Gloves Of Thievery', 12, 'gloves', 0, 1, 1, 0, false, false)
-  allgloves         = [onemitten, leathergloves, chaingloves, mailedfist, glovesofquickness, glovesofthievery]
-
-  bundleofrags  = Treasure.new('A Bundle Of Rags', 1, 'boots', 0, 1, 0, 0, false, false)
-  leatherboots  = Treasure.new('Leather Boots', 3, 'boots', 0, 1, 1, 0, false, false)
-  chainboots    = Treasure.new('Chain Boots', 6, 'boots', 0, 2, 1, 0, false, false)
-  bootsofspeed  = Treasure.new('Boots of Speed', 10, 'boots', 0, 1, 4, 0, false, false)
-  spikedgreaves = Treasure.new('Spiked Greaves', 10, 'boots', 2, 3, 0, 0, false, false)
-  allboots      = [bundleofrags, leatherboots, chainboots, bootsofspeed, spikedgreaves]
-
-  ringofprot1        = Treasure.new('Ring Of Protection +1', 2, 'ring', 0, 1, 0, 0, false, false)
-  ringofprot2        = Treasure.new('Ring Of Protection +2', 4, 'ring', 0, 2, 0, 0, false, false)
-  ringofprot3        = Treasure.new('Ring Of Protection +3', 7, 'ring', 0, 3, 0, 0, false, false)
-  ringofspeed1       = Treasure.new('Ring Of Speed +1', 2, 'ring', 0, 0, 1, 0, false, false)
-  ringofspeed2       = Treasure.new('Ring Of Speed +2', 4, 'ring', 0, 0, 2, 0, false, false)
-  ringofspeed3       = Treasure.new('Ring Of Speed +3', 7, 'ring', 0, 0, 3, 0, false, false)
-  ringofregeneration = Treasure.new('Ring Of Regeneration', 10, 'ring', 0, 0, 0, 0, false, false)
-  ringofwealth       = Treasure.new('Ring Of Wealth', 10, 'ring', 0, 0, 0, 0, false, false)
-  allrings           = [ringofprot1, ringofprot2, ringofprot3, ringofspeed1, ringofspeed2, ringofspeed3, ringofregeneration, ringofwealth]
-
-  shinybauble       = Treasure.new('A shiny bauble your mother gave you', 1, 'amulet', 0, 0, 0, 0, false, false)
-  medicammy         = Treasure.new('A pendant from the medical guild', 8, 'amulet', 0, 0, 0, 0, false, false)
-  periaptoflearning = Treasure.new('Periapt of Learning (Nerd!)', 8, 'amulet', 0, 0, 0, 0, false, false)
-  allamulets        = [shinybauble, medicammy, periaptoflearning]
+  treasures  = SEEDS.treasures
+  allarmor   = treasures[:armor].values
+  allweapons = treasures[:weapons].values
+  allhelmets = treasures[:helmets].values
+  allgloves  = treasures[:gloves].values
+  allboots   = treasures[:boots].values
+  allrings   = treasures[:rings].values
+  allamulets = treasures[:amulets].values
 
 
   goblin     = Monster.new('Goblin', 0, 0, 0, 0, 5)
@@ -99,15 +52,20 @@ def play()
   vampire     = Monster.new('Vampire', 0, 4, 0, -1, 8)
   highmonster = [hobgoblin, manticore, tiger, bugbear, swordsman, giantsnake, ghoul, giant, quickling, lion, golem, knight, dragon, vampire]
 
+  frillyunderwear = treasures[:armor][:frillyunderwear]
+  stick           = treasures[:weapons][:stick]
+  shinybauble     = treasures[:amulets][:shinybauble]
   playerinventory = [notreasure, frillyunderwear, stick, notreasure, notreasure, notreasure, notreasure, shinybauble]
-  badass          = 0
-  storeopen       = true
+
+  badass    = 0
+  storeopen = true
   puts 'What is your name, mighty warrior?'
   you      = Player.new(nil, 1, 0, 0, 1, 10, 10, 0, 0, false)
   you.name = gets.chomp
   puts
   puts you.name.to_s + ' is a weakling\'s name.  Prepare to die in my arena!  Bwahahaaaa! <cough>'
-  frillyunderwear.equip; stick.equip; shinybauble.equip
+  frillyunderwear.equip
+  stick.equip; shinybauble.equip
   puts
   you.tellstats
   puts
