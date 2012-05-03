@@ -25,32 +25,11 @@ def play()
   allamulets = treasures[:amulets].values
 
 
-  goblin     = Monster.new('Goblin', 0, 0, 0, 0, 5)
-  kobold     = Monster.new('Kobold', 0, -1, -1, 2, 5)
-  giantrat   = Monster.new('Giant Rat', 0, 1, 0, 0, 2)
-  lizardman  = Monster.new('Lizard Man', 0, 0, 2, -1, 5)
-  bandit     = Monster.new('Bandit', 0, 1, -2, 1, 5)
-  centipede  = Monster.new('Centipede', 0, -1, 1, -1, 8)
-  skeleton   = Monster.new('Skeleton', 0, 2, 0, -1, 2)
-  lowmonster = [goblin, kobold, giantrat, lizardman, bandit, centipede, skeleton]
+  monsters = SEEDS.monsters
+  lowmonster = monsters[:low].values
+  medmonster = lowmonster + monsters[:medium].values
 
-  hobgoblin  = Monster.new('Hobgoblin', 0, 0, 0, 0, 11)
-  manticore  = Monster.new('Manticore', 0, -1, 0, 3, 5)
-  tiger      = Monster.new('Tiger', 0, 2, 0, 0, 8)
-  bugbear    = Monster.new('Bugbear', 0, 0, 3, -1, 8)
-  swordsman  = Monster.new('Swordsman', 0, 1, -1, 1, 8)
-  giantsnake = Monster.new('Giant Snake', 0, 1, 1, -2, 8)
-  ghoul      = Monster.new('Ghoul', 0, 4, -1, -1, 5)
-  medmonster = [goblin, kobold, giantrat, lizardman, bandit, centipede, skeleton, hobgoblin, manticore, tiger, bugbear, swordsman, giantsnake, ghoul]
-
-  giant       = Monster.new('Giant', 0, 0, 0, 0, 17)
-  quickling   = Monster.new('Quickling', 0, -1, 0, 4, 8)
-  lion        = Monster.new('Lion', 0, 3, 0, 0, 11)
-  golem       = Monster.new('Golem', 0, 1, 4, -2, 11)
-  knight      = Monster.new('Knight', 0, 2, 1, 1, 5)
-  dragon      = Monster.new('Dragon', 0, 1, 1, -1, 14)
-  vampire     = Monster.new('Vampire', 0, 4, 0, -1, 8)
-  highmonster = [hobgoblin, manticore, tiger, bugbear, swordsman, giantsnake, ghoul, giant, quickling, lion, golem, knight, dragon, vampire]
+  highmonster = medmonster + monsters[:high].values
 
   frillyunderwear = treasures[:armor][:frillyunderwear]
   stick           = treasures[:weapons][:stick]
@@ -103,7 +82,7 @@ def play()
       badass = 0
       puts
       guildmember = false
-      guildmember = true if medicammy.equipped == true
+      guildmember = true if treasures[:amulets][:medicammy].equipped == true
       doctors = ['Feelgood', 'McGillicudy', 'Murderchop', 'Frank-N-Furter', 'Scarydoctorname', 'Shmockter']
       puts 'Doctor ' + doctors[rand(6)].to_s + ' will see you now.'
       healme = 10000
@@ -385,31 +364,31 @@ def play()
         puts 'You gain ' + xpreward.to_s + ' experience points, bringing your total to ' + you.xp.to_s
         puts 'You gain ' + goldreward.to_s + ' gold pieces, bringing your total up to ' + you.gold.to_s
         badass = badass + 1
-        if ringofregeneration.equipped
+        if treasures[:rings][:ringofregeneration].equipped
           you.hp = you.hp + rolld(6)
           you.hp = you.maxhp if you.hp > you.maxhp
           puts
           puts 'You are healed by your ring!'
         end
-        if ringofwealth.equipped
+        if treasures[:rings][:ringofwealth].equipped
           poof = rolld(6)
           puts
           puts 'An extra ' + poof.to_s + ' gold magically appears!'
           you.gold = you.gold + poof
         end
-        if glovesofthievery.equipped
+        if treasures[:gloves][:glovesofthievery].equipped
           steal = rolld(3)
           puts
           puts 'You pinch an extra ' + steal.to_s + ' gold off of the corpse.'
           you.gold = you.gold + steal
         end
-        if periaptoflearning.equipped
+        if treasures[:amulets][:periaptoflearning].equipped
           learn = rolld(3)
           puts
           puts 'You have learned extra tactics from this battle.'
           you.xp = you.xp + learn
         end
-        if helmofwisdom.equipped
+        if treasures[:helmets][:helmofwisdom].equipped
           learn = rolld(3)
           puts
           puts 'You have learned extra tactics from this battle.'

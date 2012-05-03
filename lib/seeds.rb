@@ -1,5 +1,5 @@
 module SEEDS
-  def SEEDS.treasures
+  def self.treasures
     t           = Hash.new()
     t[:armor]   = {
       :frillyunderwear => Treasure.new('Frilly Underwear', 1, 'armor', 0, 1, 0, 0, false, false),
@@ -60,5 +60,38 @@ module SEEDS
       :periaptoflearning => Treasure.new('Periapt of Learning (Nerd!)', 8, 'amulet', 0, 0, 0, 0, false, false)
     }
     t
+  end
+
+  def self.monsters
+    m = Hash.new()
+
+    m[:low]    = {
+      :goblin    => Monster.new('Goblin', 0, 0, 0, 0, 5),
+      :kobold    => Monster.new('Kobold', 0, -1, -1, 2, 5),
+      :giantrat  => Monster.new('Giant Rat', 0, 1, 0, 0, 2),
+      :lizardman => Monster.new('Lizard Man', 0, 0, 2, -1, 5),
+      :bandit    => Monster.new('Bandit', 0, 1, -2, 1, 5),
+      :centipede => Monster.new('Centipede', 0, -1, 1, -1, 8),
+      :skeleton  => Monster.new('Skeleton', 0, 2, 0, -1, 2)
+    }
+    m[:medium] = {
+      :hobgoblin  => Monster.new('Hobgoblin', 0, 0, 0, 0, 11),
+      :manticore  => Monster.new('Manticore', 0, -1, 0, 3, 5),
+      :tiger      => Monster.new('Tiger', 0, 2, 0, 0, 8),
+      :bugbear    => Monster.new('Bugbear', 0, 0, 3, -1, 8),
+      :swordsman  => Monster.new('Swordsman', 0, 1, -1, 1, 8),
+      :giantsnake => Monster.new('Giant Snake', 0, 1, 1, -2, 8),
+      :ghoul      => Monster.new('Ghoul', 0, 4, -1, -1, 5)
+    }
+    m[:high] = {
+      :giant     => Monster.new('Giant', 0, 0, 0, 0, 17),
+      :quickling => Monster.new('Quickling', 0, -1, 0, 4, 8),
+      :lion      => Monster.new('Lion', 0, 3, 0, 0, 11),
+      :golem     => Monster.new('Golem', 0, 1, 4, -2, 11),
+      :knight    => Monster.new('Knight', 0, 2, 1, 1, 5),
+      :dragon    => Monster.new('Dragon', 0, 1, 1, -1, 14),
+      :vampire   => Monster.new('Vampire', 0, 4, 0, -1, 8)
+    }
+    m
   end
 end
