@@ -12,8 +12,7 @@ class Player
     @dead      =dead
   end
 
-  attr_reader :name, :lvl, :attack, :defense, :initiative, :hp, :maxhp, :xp, :gold, :dead
-  attr_writer :name, :lvl, :attack, :defense, :initiative, :hp, :maxhp, :xp, :gold, :dead
+  attr_accessor :name, :lvl, :attack, :defense, :initiative, :hp, :maxhp, :xp, :gold, :dead
 
   def tellstats
     puts self.name + ', your stats are as follows:'
